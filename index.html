@@ -3,67 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr. Beluga's Backend Service</title>
+    <title>Kasey Game Records</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Impact&display=swap" rel="stylesheet">
+    
     <style>
+        /* Basic styling for the body */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #3498db, #8e44ad);
-            color: white;
-            text-align: center;
+            width: 100vw;
+            overflow: auto;
         }
 
-        .container {
-            background: rgba(0, 0, 0, 0.7);
+        /* Form wrapper */
+        .form-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
-            border-radius: 10px;
-            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        /* Form container */
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+
+        .form-container.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h1 {
-            font-family: Impact, sans-serif;
+            text-align: center;
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-family: 'Impact', sans-serif;
         }
 
-        button {
-            background: #ffcc00;
+        label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #2575fc;
+            background-color: #e6f0ff;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #2575fc;
+            color: #fff;
+            font-size: 16px;
             border: none;
-            padding: 10px 20px;
-            font-size: 18px;
-            font-weight: bold;
+            padding: 15px;
+            border-radius: 8px;
             cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
         }
 
-        button:hover {
-            background: #ffaa00;
+        input[type="submit"]:hover {
+            background-color: #1a62d6;
+        }
+
+        @media screen and (max-width: 768px) {
+            .form-container {
+                width: 90%;
+                height: auto;
+                padding: 20px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .form-container {
+                max-width: 90%;
+                height: auto;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            input[type="submit"] {
+                padding: 12px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome!</h1>
-        <p id="message"></p>
-        <button onclick="contactMe()">Contact Me</button>
+    <div class="form-wrapper">
+        <a href="https://zu38.github.io/id" class="next-button">
+            <button type="button">Agent Link</button>
+        </a>
+         
+        <a href="https://zu38.github.io/pid" class="next-button1">
+            <button type="button">Player Link</button>
+        </a>
+        
+        <div class="form-container" id="form-container">
+            <h1>Kasey Game Records</h1>
+            <form action="https://script.google.com/macros/s/AKfycbwmzb28qBPMOLBJ0wpxR8LpqzEnSmAZQma055PP1O6WAzWsIEGNzY19Xp26hAv6ggcg/exec" method="POST">
+                <label for="player_name">Player's Name:</label>
+                <input type="text" id="player_name" name="player_name" required>
+
+                <label for="cashtag">Player's Cashtag:</label>
+                <input type="text" id="cashtag" name="cashtag" required>
+
+                <label for="game">Game:</label>
+                <select id="game" name="game" required>
+                    <option value="juwa">Juwa</option>
+                    <option value="gamevault">Gamevault</option>
+                    <option value="firekirin">Firekirin</option>
+                    <option value="pandamaster">Pandamaster</option>
+                    <option value="orionstar">Orionstar</option>
+                    <option value="gameroom">Gameroom</option>
+                    <option value="vblink">Vblink</option>
+                    <option value="vegasweep">Vegasweep</option>
+                    <option value="riversweep">Riversweep</option>
+                    <option value="yolo">Yolo</option>
+                    <option value="milkyway">Milkyway</option>
+                </select>
+
+                <label for="cashin">Cashin:</label>
+                <input type="number" id="cashin" name="cashin" required>
+
+                <label for="cashout">Cashout:</label>
+                <input type="number" id="cashout" name="cashout" required>
+
+                <label for="employee">Employee:</label>
+                <select id="employee" name="employee" required>
+                    <option value="mr_ethical">Mr Ethical</option>
+                    <option value="issagi">Issagi</option>
+                    <option value="clean_sea">Clean Sea</option>
+                </select>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+
+                <label for="remarks">Remarks:</label>
+                <textarea id="remarks" name="remarks"></textarea>
+
+                <label for="record_from">Record from:</label>
+                <select id="record_from" name="record_from" required>
+                    <option value="kasey">Kasey</option>
+                    <option value="others">Others</option>
+                </select>
+
+                <input type="submit" value="Submit">
+            </form>
+
+            <a href="https://zu38.github.io/wr">Invoice</a>
+            <a href="https://docs.google.com/spreadsheets/d/1doU_kq3bi3WawjvqLu-Eyk3RxQmRvecezJ7iJvba1bU/edit?usp=sharing">View Records</a>
+        </div>
     </div>
 
     <script>
-        document.getElementById("message").innerHTML = `
-            Hello, I am Mr. Beluga. This backend is designed and distributed by me. 
-            If you need a similar backend, you can contact me. It costs only $5 per month. 
-            This module includes everything you need to run your casino, such as generating 
-            web receipts, storing records in a spreadsheet, and full automation. 
-            I can also design a website for your gaming platform and perform SEO to boost your pages.
-        `;
-
-        function contactMe() {
-            alert("Contact Mr. Beluga for this backend service!");
-        }
+        window.onload = function () {
+            const today = new Date();
+            document.getElementById("date").value = today.toISOString().split('T')[0];
+            document.getElementById("time").value = new Date().toLocaleTimeString('en-GB').slice(0, 5);
+            document.getElementById("form-container").classList.add("show");
+        };
     </script>
 </body>
 </html>
