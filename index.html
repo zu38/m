@@ -7,32 +7,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Impact&display=swap" rel="stylesheet">
     
     <style>
-        /* Basic styling for the body */
         body {
             font-family: 'Roboto', sans-serif;
             background: linear-gradient(to right, #6a11cb, #2575fc);
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            width: 100vw;
+            justify-content: flex-start;
+            min-height: 100vh;
+            width: 100%;
             overflow: auto;
         }
 
-        /* Form wrapper */
-        .form-wrapper {
-            width: 100%;
-            height: 100%;
+        .top-buttons {
+            margin-top: 20px;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
+            gap: 15px;
         }
 
-        /* Form container */
+        .top-buttons a {
+            text-decoration: none;
+        }
+
+        .top-buttons button {
+            background-color: #ffcc00;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s ease;
+        }
+
+        .top-buttons button:hover {
+            background: #ffaa00;
+        }
+
         .form-container {
             background-color: #fff;
             padding: 30px;
@@ -46,6 +59,7 @@
             transform: translateY(50px);
             overflow-y: auto;
             max-height: 80vh;
+            margin-top: 20px;
         }
 
         .form-container.show {
@@ -59,7 +73,6 @@
             font-size: 2rem;
             margin-bottom: 20px;
             font-weight: 700;
-            letter-spacing: 1px;
             font-family: 'Impact', sans-serif;
         }
 
@@ -82,16 +95,6 @@
             transition: all 0.3s ease;
         }
 
-        textarea {
-            height: 100px;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: #2575fc;
-            background-color: #e6f0ff;
-            outline: none;
-        }
-
         input[type="submit"] {
             background-color: #2575fc;
             color: #fff;
@@ -109,21 +112,51 @@
             background-color: #1a62d6;
         }
 
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links a {
+            display: block;
+            background: #6a11cb;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 8px 0;
+            transition: 0.3s;
+        }
+
+        .links a:hover {
+            background: #4a0e91;
+        }
+
+        .learn-more {
+            background: #ff5733;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .learn-more:hover {
+            background: #c44129;
+        }
+
         @media screen and (max-width: 768px) {
             .form-container {
                 width: 90%;
-                height: auto;
-                padding: 20px;
             }
         }
 
         @media screen and (max-width: 480px) {
-            .form-container {
-                max-width: 90%;
-                height: auto;
-                padding: 15px;
-            }
-
             h1 {
                 font-size: 1.5rem;
             }
@@ -135,82 +168,53 @@
     </style>
 </head>
 <body>
-    <div class="form-wrapper">
-        <a href="https://zu38.github.io/id" class="next-button">
-            <button type="button">Agent Link</button>
-        </a>
-         
-        <a href="https://zu38.github.io/pid" class="next-button1">
-            <button type="button">Player Link</button>
-        </a>
-        
-        <div class="form-container" id="form-container">
-            <h1>Kasey Game Records</h1>
-            <form action="https://script.google.com/macros/s/AKfycbwmzb28qBPMOLBJ0wpxR8LpqzEnSmAZQma055PP1O6WAzWsIEGNzY19Xp26hAv6ggcg/exec" method="POST">
-                <label for="player_name">Player's Name:</label>
-                <input type="text" id="player_name" name="player_name" required>
 
-                <label for="cashtag">Player's Cashtag:</label>
-                <input type="text" id="cashtag" name="cashtag" required>
+    <div class="top-buttons">
+        <a href="https://zu38.github.io/id"><button>Agent Link</button></a>
+        <a href="https://zu38.github.io/pid"><button>Player Link</button></a>
+    </div>
 
-                <label for="game">Game:</label>
-                <select id="game" name="game" required>
-                    <option value="juwa">Juwa</option>
-                    <option value="gamevault">Gamevault</option>
-                    <option value="firekirin">Firekirin</option>
-                    <option value="pandamaster">Pandamaster</option>
-                    <option value="orionstar">Orionstar</option>
-                    <option value="gameroom">Gameroom</option>
-                    <option value="vblink">Vblink</option>
-                    <option value="vegasweep">Vegasweep</option>
-                    <option value="riversweep">Riversweep</option>
-                    <option value="yolo">Yolo</option>
-                    <option value="milkyway">Milkyway</option>
-                </select>
+    <div class="form-container" id="form-container">
+        <h1>Kasey Game Records</h1>
+        <form action="https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_URL/exec" method="POST">
+            <label for="player_name">Player's Name:</label>
+            <input type="text" id="player_name" name="player_name" required>
 
-                <label for="cashin">Cashin:</label>
-                <input type="number" id="cashin" name="cashin" required>
+            <label for="cashtag">Player's Cashtag:</label>
+            <input type="text" id="cashtag" name="cashtag" required>
 
-                <label for="cashout">Cashout:</label>
-                <input type="number" id="cashout" name="cashout" required>
+            <label for="game">Game:</label>
+            <select id="game" name="game" required>
+                <option value="juwa">Juwa</option>
+                <option value="gamevault">Gamevault</option>
+                <option value="firekirin">Firekirin</option>
+            </select>
 
-                <label for="employee">Employee:</label>
-                <select id="employee" name="employee" required>
-                    <option value="mr_ethical">Mr Ethical</option>
-                    <option value="issagi">Issagi</option>
-                    <option value="clean_sea">Clean Sea</option>
-                </select>
+            <label for="cashin">Cashin:</label>
+            <input type="number" id="cashin" name="cashin" required>
 
-                <label for="date">Date:</label>
-                <input type="date" id="date" name="date" required>
+            <label for="cashout">Cashout:</label>
+            <input type="number" id="cashout" name="cashout" required>
 
-                <label for="time">Time:</label>
-                <input type="time" id="time" name="time" required>
+            <input type="submit" value="Submit">
+        </form>
 
-                <label for="remarks">Remarks:</label>
-                <textarea id="remarks" name="remarks"></textarea>
-
-                <label for="record_from">Record from:</label>
-                <select id="record_from" name="record_from" required>
-                    <option value="kasey">Kasey</option>
-                    <option value="others">Others</option>
-                </select>
-
-                <input type="submit" value="Submit">
-            </form>
-
+        <div class="links">
             <a href="https://zu38.github.io/wr">Invoice</a>
-            <a href="https://docs.google.com/spreadsheets/d/1doU_kq3bi3WawjvqLu-Eyk3RxQmRvecezJ7iJvba1bU/edit?usp=sharing">View Records</a>
+            <a href="https://docs.google.com/spreadsheets/d/YOUR_SPREADSHEET_ID/edit?usp=sharing">View Records</a>
+            <div class="learn-more" onclick="showPopup()">Learn More...</div>
         </div>
     </div>
 
     <script>
         window.onload = function () {
-            const today = new Date();
-            document.getElementById("date").value = today.toISOString().split('T')[0];
-            document.getElementById("time").value = new Date().toLocaleTimeString('en-GB').slice(0, 5);
             document.getElementById("form-container").classList.add("show");
         };
+
+        function showPopup() {
+            alert("Hello, I am Mr. Beluga. This backend is designed and distributed by me. If you need a similar backend, you can contact me. It costs only $5 per month. This module includes everything you need to run your casino, such as generating web receipts, storing records in a spreadsheet, and full automation. I can also design a website for your gaming platform and perform SEO to boost your pages.");
+        }
     </script>
+
 </body>
 </html>
