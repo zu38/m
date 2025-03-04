@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Beluga's Backend Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-family: Impact, sans-serif;
+        }
+
+        button {
+            background: #ffcc00;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #ffaa00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome!</h1>
+        <p id="message"></p>
+        <button onclick="contactMe()">Contact Me</button>
+    </div>
+
+    <script>
+        document.getElementById("message").innerHTML = `
+            Hello, I am Mr. Beluga. This backend is designed and distributed by me. 
+            If you need a similar backend, you can contact me. It costs only $5 per month. 
+            This module includes everything you need to run your casino, such as generating 
+            web receipts, storing records in a spreadsheet, and full automation. 
+            I can also design a website for your gaming platform and perform SEO to boost your pages.
+        `;
+
+        function contactMe() {
+            alert("Contact Mr. Beluga for this backend service!");
+        }
+    </script>
+</body>
+</html>
